@@ -1,0 +1,14 @@
+<mat-horizontal-stepper #stepper (selectionChange)="selectionChanged($event)">
+  <mat-step
+    [label]="step.title"
+    #myStep
+    *ngFor="let step of steps; let i = index"
+    [routerLink]="'stepper/' + step.path"
+  >
+    <router-outlet *ngIf="i === selectedStepIndex"></router-outlet>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
